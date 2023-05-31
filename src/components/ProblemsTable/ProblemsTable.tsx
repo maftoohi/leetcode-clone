@@ -34,7 +34,7 @@ const ProblemsTable: React.FC<ProblemsTableProps> = () => {
               </td>
               <td className={`px-6 py-4 ${difficulyColor}`}>{problem.difficulty}</td>
               <td className="px-6 py-4">{problem.category}</td>
-              <td className="px-6 py-4">{problem.videoId ? <AiFillYoutube fontSize={28} className="cursor-pointer hover:text-red-600" onClick={() => setYoutubePlayer({ isOpen: true, videoId: problem.videoId })} /> : <p className="text-gray-400">Coming soon</p>}</td>
+              <td className="px-6 py-4">{problem.videoId ? <AiFillYoutube fontSize={28} className="cursor-pointer hover:text-red-600" onClick={() => setYoutubePlayer({ isOpen: true, videoId: problem.videoId as string })} /> : <p className="text-gray-400">Coming soon</p>}</td>
             </tr>
           );
         })}
