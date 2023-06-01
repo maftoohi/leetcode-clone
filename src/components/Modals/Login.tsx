@@ -4,6 +4,7 @@ import { auth } from "@/firebase/firebase";
 import React, { useState, useEffect } from "react";
 import { useSetRecoilState } from "recoil";
 import { useRouter } from "next/router";
+import { toast } from "react-toastify";
 
 type LoginProps = {};
 
@@ -26,13 +27,13 @@ const Login: React.FC<LoginProps> = () => {
       if (!newUser) return;
       router.push("/");
     } catch (error: any) {
-      alert(error.message);
+      toast.error(error.message, { position: "top-center", autoClose: 3000, theme: "dark" });
     }
   };
 
   useEffect(() => {
     if (error) {
-      alert(error.message);
+      toast.error(error.message, { position: "top-center", autoClose: 3000, theme: "dark" });
     }
   }, [error]);
 
