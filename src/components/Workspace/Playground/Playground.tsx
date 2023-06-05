@@ -4,6 +4,7 @@ import Split from "react-split";
 import CodeMirror from "@uiw/react-codemirror";
 import { vscodeDark } from "@uiw/codemirror-theme-vscode";
 import { javascript } from "@codemirror/lang-javascript";
+import EditorFooter from "./EditorFooter";
 
 type PlaygroundProps = {};
 
@@ -65,6 +66,7 @@ const Playground: React.FC<PlaygroundProps> = () => {
           </div>
         </div>
       </Split>
+      <EditorFooter />
     </div>
   );
 };
