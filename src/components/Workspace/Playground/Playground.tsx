@@ -9,13 +9,18 @@ import EditorFooter from "./EditorFooter";
 type PlaygroundProps = {};
 
 const Playground: React.FC<PlaygroundProps> = () => {
+  const boilerPlate = `function twoSum(nums, target){
+  //Write your code here
+};`;
+
   return (
-    <div className="flex flex-col bg-dark-layer-1 relative">
+    <div className="flex flex-col bg-dark-layer-1 relative overflow-x-hidden">
       <PreferenceNav />
       <Split className="h-[calc(100vh-94px)]" direction="vertical" sizes={[60, 40]} minSize={60}>
         <div className="w-full overflow-auto">
-          <CodeMirror value="const a = 1;" theme={vscodeDark} extensions={[javascript()]} style={{ fontSize: 16 }} />
+          <CodeMirror value={boilerPlate} theme={vscodeDark} extensions={[javascript()]} style={{ fontSize: 16 }} />
         </div>
+
         <div className="w-full px-5 overflow-auto">
           {/* testcase heading*/}
           <div className="flex h-10 items-center space-x-6">
@@ -48,6 +53,7 @@ const Playground: React.FC<PlaygroundProps> = () => {
             </div>
           </div>
 
+          {/*input and output*/}
           <div className="font-semibold my-4">
             <p className="text-sm font-medium mt-4 text-white ">Input:</p>
             <div
