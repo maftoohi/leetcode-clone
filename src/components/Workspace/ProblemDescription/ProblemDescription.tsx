@@ -6,6 +6,8 @@ import Image from "next/image";
 import { useEffect, useState } from "react";
 import { firestore } from "@/firebase/firebase";
 import { doc, getDoc } from "firebase/firestore";
+import CircleSkeleton from "@/components/Skeletons/CircleSkeleton";
+import RectangleSkeleton from "@/components/Skeletons/RectangleSkeleton";
 
 type ProblemDescriptionProps = {
   problem: Problem;
@@ -45,6 +47,16 @@ const ProblemDescription: React.FC<ProblemDescriptionProps> = ({ problem }) => {
                 <div className="cursor-pointer hover:bg-dark-fill-3  rounded p-[3px]  ml-4 text-xl transition-colors duration-200 text-green-s text-dark-gray-6 ">
                   <TiStarOutline />
                 </div>
+              </div>
+            )}
+
+            {loading && (
+              <div className="flex mt-3 space-x-2">
+                <RectangleSkeleton />
+                <CircleSkeleton />
+                <RectangleSkeleton />
+                <RectangleSkeleton />
+                <CircleSkeleton />
               </div>
             )}
 
