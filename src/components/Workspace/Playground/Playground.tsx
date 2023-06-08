@@ -9,17 +9,26 @@ import { Problem } from "@/utils/types/problem";
 
 type PlaygroundProps = {
   problem: Problem;
+  setSuccess: React.Dispatch<React.SetStateAction<boolean>>;
 };
 
-const Playground: React.FC<PlaygroundProps> = ({ problem }) => {
+const Playground: React.FC<PlaygroundProps> = ({ problem, setSuccess }) => {
   const [activeTestCaseId, setActiveTestCaseId] = useState<number>(0);
+
+  const handleSubmit = () => {
+    alert("submitted");
+  };
+
+  const onChange = (value: string) => {
+    console.log(value);
+  };
 
   return (
     <div className="flex flex-col bg-dark-layer-1 relative overflow-x-hidden">
       <PreferenceNav />
       <Split className="h-[calc(100vh-94px)]" direction="vertical" sizes={[60, 40]} minSize={60}>
         <div className="w-full overflow-auto">
-          <CodeMirror value={problem.starterCode} theme={vscodeDark} extensions={[javascript()]} style={{ fontSize: 16 }} />
+          <CodeMirror value={problem.starterCode} theme={vscodeDark} extensions={[javascript()]} style={{ fontSize: 16 }} onChange={onChange} />
         </div>
 
         <div className="w-full px-5 overflow-auto">
@@ -65,7 +74,7 @@ const Playground: React.FC<PlaygroundProps> = ({ problem }) => {
           </div>
         </div>
       </Split>
-      <EditorFooter />
+      <EditorFooter handleSubmit={handleSubmit} />
     </div>
   );
 };
